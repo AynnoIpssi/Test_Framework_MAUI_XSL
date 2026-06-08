@@ -1,0 +1,16 @@
+{
+  "TestId": "TC04",
+  "Description": "Date de la fiche dans le futur",
+  "ResultatAttendu": "Alerte date future, pas de sauvegarde",
+  "Lot": "planned_42",
+  "TypeLot": "planned",
+  "DateFiche": "2027-01-01",
+  "DateEnlevement": "2027-01-03",
+  "DateReception": "2027-01-03",
+  "Abattoir": "Abattoir du Nord",
+  "NbMale": "500",
+  "PoidsMale": "2200",
+  "AvecSignature": true,
+  "SauvegardeAttendue": false,
+  "AlerteAttendue": "Attention, vous avez sélectionné une date dans le futur"
+}
