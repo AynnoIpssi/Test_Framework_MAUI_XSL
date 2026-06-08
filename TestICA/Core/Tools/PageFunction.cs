@@ -5,6 +5,7 @@ using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Support.UI;
 using Serilog;
 using TestICA.Core.SmartLocator;
+using TestICA.Core.SmartClickerService;
 
 namespace TestICA.Core;
 
@@ -35,6 +36,8 @@ public class PageFunction
         Log.Information($"[PageFunction] Élément '{id}' récupéré depuis le SmartLocator.");
         return element;
     }
+    
+    
 
     /// <summary>
     /// Clique sur un élément (avec secours JavaScript si Appium est bloqué)
@@ -42,40 +45,8 @@ public class PageFunction
     public void Click(string id)
     {
         var element = FindById(id);
-
-        try
-        {
-            Log.Information($"[PageFunction] Tentative de clic physique par coordonnées (W3C Actions) sur '{id}'...");
-        
-            // 1. Récupérer la position exacte du bouton à l'écran
-            var location = element.Location;
-            var size = element.Size;
-        
-            // Calcul du centre exact du bouton
-            int centerX = location.X + (size.Width / 2);
-            int centerY = location.Y + (size.Height / 2);
-
-            // 2. Simuler un vrai appui de doigt (Pointer Spec)
-            var inputSource = new OpenQA.Selenium.Interactions.PointerInputDevice(OpenQA.Selenium.Interactions.PointerKind.Touch, "finger");
-            var sequence = new OpenQA.Selenium.Interactions.ActionSequence(inputSource, 0);
-
-            // Déplacer le doigt sur le bouton -> Presser -> Relâcher
-            sequence.AddAction(inputSource.CreatePointerMove(OpenQA.Selenium.Interactions.CoordinateOrigin.Viewport, centerX, centerY, TimeSpan.Zero));
-            sequence.AddAction(inputSource.CreatePointerDown(OpenQA.Selenium.Interactions.MouseButton.Left));
-            sequence.AddAction(inputSource.CreatePointerUp(OpenQA.Selenium.Interactions.MouseButton.Left));
-
-            // Exécuter l'action sur le périphérique
-            ((IActionExecutor)_driver).PerformActions(new List<OpenQA.Selenium.Interactions.ActionSequence> { sequence });
-        
-            Log.Information($"[PageFunction] ✅ Clic par coordonnées réussi au point [{centerX}, {centerY}].");
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"[PageFunction] ❌ Le clic par coordonnées a échoué : {ex.Message}");
-        
-            // Secours ultime si les actions plantent (on retente le clic standard)
-            element.Click();
-        }
+        var clicker = new SmartClicker(_driver);
+        clicker.Click(element, id);
     }
 
     /// <summary>
@@ -109,4 +80,6 @@ public class PageFunction
             Log.Information($"[PageFunction] Valeur injectée avec succès via JS dans '{id}'.");
         }
     }
+    
+    
 }

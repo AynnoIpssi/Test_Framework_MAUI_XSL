@@ -126,10 +126,9 @@ public class LoginTests : AppiumStarter
         try
         {
             string scriptClicFinal = @"
-                var btn = document.querySelector('#authenticateModal button[type=""submit""]')
-                          || document.querySelector('#authenticateModal .btn-primary')
-                          || document.evaluate('//button[contains(text(), ""Valider"")]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-                          || document.evaluate('//button[contains(text(), ""Se connecter"")]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                var btn = document.getElementById('btnValidateSynchro')
+                          || document.querySelector('input[value=""Valider""]')
+                          || document.querySelector('input[onclick*=""loginDuglu""]');
 
                 if (btn) {
                     btn.focus();

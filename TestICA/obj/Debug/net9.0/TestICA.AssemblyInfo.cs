@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestICA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+545f21016971f2c7631f91da87547e89f0618c42")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestICA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestICA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -21,16 +21,18 @@ public static class SmartLocator
         SmartConsole.Log("I", "SmartLocator", "Initialisé avec succès.");
     }
 
+    private static string GetFreshPageSource()
+    {
+        var js = (IJavaScriptExecutor)_driver;
+        return js.ExecuteScript("return document.documentElement.outerHTML;") as string ?? string.Empty;
+    }
+
     public static void AnalyzeCurrentPage()
     {
-        // 1. Sécurité : Vérification du cache
         if (_cache == null)
-        {
             _cache = new Dictionary<string, IWebElement>();
-        }
         _cache.Clear();
-        
-        // 2. Sécurité : Vérification du Driver
+
         if (_driver == null)
         {
             SmartConsole.Log("E", "SmartLocator", "Impossible d'analyser la page : Le Driver n'est pas initialisé.");
@@ -38,9 +40,8 @@ public static class SmartLocator
         }
 
         SmartConsole.Log("I", "SmartLocator", "=== DÉBUT DU SCAN DE PAGE ===");
-        
-        // 3. Sécurité Ligne 26 : Gestion du ConfigReader qui peut être null
-        string rootTagName = "body"; 
+
+        string rootTagName = "body";
         if (ConfigReader.SmartLocator != null && !string.IsNullOrEmpty(ConfigReader.SmartLocator.RootContainerTagName))
         {
             rootTagName = ConfigReader.SmartLocator.RootContainerTagName;
@@ -52,24 +53,20 @@ public static class SmartLocator
 
         HtmlDocument doc = null;
         HtmlNode rootNode = null;
-        
-        // --- BOUCLE D'ATTENTE SYNCHRO (Gère les 2 à 7 secondes de chargement) ---
+
         int maxAttentes = 10;
         for (int i = 1; i <= maxAttentes; i++)
         {
             try
             {
-                var html = _driver.PageSource;
+                var html = GetFreshPageSource();
                 if (string.IsNullOrEmpty(html))
-                {
                     throw new Exception("PageSource vide");
-                }
 
                 doc = new HtmlDocument();
                 doc.LoadHtml(html);
 
-                // Recherche insensible à la casse (Tente //body puis //BODY)
-                rootNode = doc.DocumentNode.SelectSingleNode($"//{rootTagName.ToLower()}") 
+                rootNode = doc.DocumentNode.SelectSingleNode($"//{rootTagName.ToLower()}")
                            ?? doc.DocumentNode.SelectSingleNode($"//{rootTagName.ToUpper()}");
 
                 if (rootNode != null)
@@ -84,22 +81,19 @@ public static class SmartLocator
             }
 
             SmartConsole.Log("W", "SmartLocator", $"En attente de l'écran principal... Tentative {i}/{maxAttentes}");
-            Thread.Sleep(1000); // Attend 1 seconde avant la prochaine tentative
+            Thread.Sleep(1000);
         }
 
-        // Si après 10 secondes on n'a toujours rien trouvé
         if (rootNode == null)
         {
             SmartConsole.Log("E", "SmartLocator", $"Le conteneur '{rootTagName}' (ou '{rootTagName.ToUpper()}') n'est jamais apparu.");
             return;
         }
 
-        // --- DEBUT DE L'INDEXATION DES ELEMENTS ---
         try
         {
-            // Extrait les boutons, inputs et liens du XSLT
             var nodes = rootNode.SelectNodes(".//button | .//input | .//a");
-            
+
             if (nodes == null || nodes.Count == 0)
             {
                 SmartConsole.Log("W", "SmartLocator", "Aucun élément interactif détecté dans le conteneur racine.");
@@ -107,40 +101,58 @@ public static class SmartLocator
             }
 
             var typeCounters = new Dictionary<string, int>();
+            var js = (IJavaScriptExecutor)_driver;
 
             foreach (var node in nodes)
             {
                 var tagName = node.Name;
-                
-                if (!typeCounters.ContainsKey(tagName))
-                {
-                    typeCounters[tagName] = 1;
-                }
-                else
-                {
-                    typeCounters[tagName]++;
-                }
 
-                var technicalAttribute = node.GetAttributeValue("name", 
+                if (!typeCounters.ContainsKey(tagName))
+                    typeCounters[tagName] = 1;
+                else
+                    typeCounters[tagName]++;
+
+                var technicalAttribute = node.GetAttributeValue("name",
                                          node.GetAttributeValue("type", "element"));
-                
+
                 var cleanAttribute = technicalAttribute.Replace(" ", "_").ToLower();
                 var smartId = $"{tagName}_{cleanAttribute}_{typeCounters[tagName]}";
-                
-                // Construit le XPath basé sur le vrai nom du nœud parent trouvé (BODY ou body)
                 var elementXPath = $"//{rootNode.Name}//{tagName}[{typeCounters[tagName]}]";
 
                 try
                 {
-                    var webElement = _driver.FindElement(By.XPath(elementXPath));
+                    IWebElement webElement;
+
+                    try
+                    {
+                        // Tentative standard W3C
+                        webElement = _driver.FindElement(By.XPath(elementXPath));
+                    }
+                    catch (WebDriverException)
+                    {
+                        // Fallback : récupération via JS direct sur le DOM frais
+                        SmartConsole.Log("W", "Fingerprint", $"W3C masqué, tentative JS pour : {smartId}");
+
+                        var jsElement = js.ExecuteScript(
+                            $"return document.evaluate(\"{elementXPath}\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;"
+                        ) as IWebElement;
+
+                        if (jsElement == null)
+                        {
+                            SmartConsole.Log("W", "Fingerprint", $"Introuvable même via JS : {smartId}");
+                            continue;
+                        }
+
+                        webElement = jsElement;
+                        SmartConsole.Log("D", "Fingerprint", $"Récupéré via JS -> Clé : \"{smartId}\"");
+                    }
+
                     _cache.Add(smartId, webElement);
-                    
-                    // Log en bleu dans le terminal
                     SmartConsole.Log("D", "Fingerprint", $"Indexé -> Clé : \"{smartId}\" | XPath: {elementXPath}");
                 }
-                catch (WebDriverException)
+                catch (Exception ex)
                 {
-                    SmartConsole.Log("W", "Fingerprint", $"Élément HTML masqué pour Appium : {smartId}");
+                    SmartConsole.Log("W", "Fingerprint", $"Échec total sur {smartId} : {ex.Message}");
                     continue;
                 }
             }
@@ -152,23 +164,20 @@ public static class SmartLocator
             SmartConsole.Log("E", "SmartLocator", $"Erreur critique pendant l'indexation : {ex.Message}");
         }
     }
-    
+
     public static List<string> GetLastDetectedIds()
     {
         if (_cache == null)
-        {
             return new List<string>();
-        }
 
         return new List<string>(_cache.Keys);
     }
-    
+
     public static IWebElement GetElement(string smartId)
     {
         if (_cache != null && _cache.TryGetValue(smartId, out var element))
-        {
             return element;
-        }
+
         return null;
     }
 }

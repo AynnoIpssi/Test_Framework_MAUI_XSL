@@ -10,6 +10,19 @@ public class JsExecutor
 {
     public string pathScript = "../ScriptJS";
     public IWebDriver? configDriver { get; set; }
+    
+    public object? ExecuteRaw(string scriptContent, IWebElement? element = null)
+    {
+        checkConf();
+
+        if (configDriver is not IJavaScriptExecutor jsDriver)
+            throw new Exception("Le driver ne supporte pas JavaScript.");
+
+        if (element != null)
+            return jsDriver.ExecuteScript(scriptContent, element);
+
+        return jsDriver.ExecuteScript(scriptContent);
+    }
 
     public void checkConf()
     {
@@ -62,6 +75,8 @@ public class JsExecutor
             // Fallback pour tes anciens scripts très courts d'une seule ligne sans return
             scriptExecuteconforme = "return " + scriptContent;
         }
+        
+        
 
         // Execution finale garantie sans NullRefSyntax
         string? jsonResult = jsDriver.ExecuteScript(scriptExecuteconforme) as string;
