@@ -1,0 +1,1590 @@
+{
+  "generatedAt": "2026-06-08",
+  "appPackage": "baoba.devUITestsUAT",
+  "stats": {
+    "totalRubriques": 224,
+    "totalNavigables": 159,
+    "parCategorie": {
+      "Système": 11,
+      "Accueil": 7,
+      "AJAX": 50,
+      "Autre": 3,
+      "Culture": 15,
+      "Matériel": 2,
+      "Paramètres": 8,
+      "Troupeau": 54,
+      "Volailles": 71,
+      "ReseauSocial": 3
+    }
+  },
+  "pages": {
+    "0": {
+      "id": 0,
+      "nom": "Attente web",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 0, '', '', '', '')"
+    },
+    "1": {
+      "id": 1,
+      "nom": "Login",
+      "categorie": "Système",
+      "navigable": true,
+      "jsNavigation": "go(1, 1, '', '', '', '')"
+    },
+    "2": {
+      "id": 2,
+      "nom": "Accueil",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 2, '', '', '', '')"
+    },
+    "3": {
+      "id": 3,
+      "nom": "OK JSON",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 3, '', '', '', '')"
+    },
+    "4": {
+      "id": 4,
+      "nom": "Popin ajax - Liste utilisateurs",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 4, '', '', '', '')"
+    },
+    "5": {
+      "id": 5,
+      "nom": "Listes animaux",
+      "categorie": "Autre",
+      "navigable": true,
+      "jsNavigation": "go(1, 5, '', '', '', '')"
+    },
+    "6": {
+      "id": 6,
+      "nom": "Résultat recherche AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 6, '', '', '', '')"
+    },
+    "7": {
+      "id": 7,
+      "nom": "Listes animaux pour sélection indivisuel",
+      "categorie": "Autre",
+      "navigable": true,
+      "jsNavigation": "go(1, 7, '', '', '', '')"
+    },
+    "8": {
+      "id": 8,
+      "nom": "Résultat recherche AJAX pour sélection indivisuel",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 8, '', '', '', '')"
+    },
+    "9": {
+      "id": 9,
+      "nom": "Gestion lot",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 9, '', '', '', '')"
+    },
+    "10": {
+      "id": 10,
+      "nom": "Pesée animal",
+      "categorie": "Autre",
+      "navigable": true,
+      "jsNavigation": "go(1, 10, '', '', '', '')"
+    },
+    "11": {
+      "id": 11,
+      "nom": "AJAX état synchro",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 11, '', '', '', '')"
+    },
+    "12": {
+      "id": 12,
+      "nom": "Retour upload",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 12, '', '', '', '')"
+    },
+    "13": {
+      "id": 13,
+      "nom": "REPONSE JSON DOCUMENTS",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 13, '', '', '', '')"
+    },
+    "14": {
+      "id": 14,
+      "nom": "Popin ajax - Liste technician",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 14, '', '', '', '')"
+    },
+    "15": {
+      "id": 15,
+      "nom": "Info Synchro par ferme",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 15, '', '', '', '')"
+    },
+    "16": {
+      "id": 16,
+      "nom": "REPONSE JSON MEDIAS",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 16, '', '', '', '')"
+    },
+    "17": {
+      "id": 17,
+      "nom": "REPONSE JSON GUIDE",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 17, '', '', '', '')"
+    },
+    "18": {
+      "id": 18,
+      "nom": "REPONSE JSON LOCAL DOC",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 18, '', '', '', '')"
+    },
+    "19": {
+      "id": 19,
+      "nom": "NO FARM",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 19, '', '', '', '')"
+    },
+    "20": {
+      "id": 20,
+      "nom": "Listes",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 20, '', '', '', '')"
+    },
+    "21": {
+      "id": 21,
+      "nom": "Une liste",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 21, '', '', '', '')"
+    },
+    "25": {
+      "id": 25,
+      "nom": "Retour forgotten",
+      "categorie": "Système",
+      "navigable": false,
+      "jsNavigation": "go(1, 25, '', '', '', '')"
+    },
+    "30": {
+      "id": 30,
+      "nom": "Gestion des lots",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 30, '', '', '', '')"
+    },
+    "31": {
+      "id": 31,
+      "nom": "Création lot popin ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 31, '', '', '', '')"
+    },
+    "32": {
+      "id": 32,
+      "nom": "Fiche lot",
+      "categorie": "Accueil",
+      "navigable": true,
+      "jsNavigation": "go(1, 32, '', '', '', '')"
+    },
+    "40": {
+      "id": 40,
+      "nom": "Culture - Liste fiche parcellaire",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 40, '', '', '', '')"
+    },
+    "41": {
+      "id": 41,
+      "nom": "Culture - Selection parcelle popin ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 41, '', '', '', '')"
+    },
+    "42": {
+      "id": 42,
+      "nom": "Culture - Fiche parcelle",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 42, '', '', '', '')"
+    },
+    "43": {
+      "id": 43,
+      "nom": "Culture - Assolement",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 43, '', '', '', '')"
+    },
+    "44": {
+      "id": 44,
+      "nom": "Culture - Historique culture",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 44, '', '', '', '')"
+    },
+    "45": {
+      "id": 45,
+      "nom": "Culture - Semis",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 45, '', '', '', '')"
+    },
+    "46": {
+      "id": 46,
+      "nom": "Culture - Travail du sol",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 46, '', '', '', '')"
+    },
+    "47": {
+      "id": 47,
+      "nom": "Culture - Pulvérisation",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 47, '', '', '', '')"
+    },
+    "48": {
+      "id": 48,
+      "nom": "Culture - Fertilisation",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 48, '', '', '', '')"
+    },
+    "49": {
+      "id": 49,
+      "nom": "Culture - Irrigation",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 49, '', '', '', '')"
+    },
+    "50": {
+      "id": 50,
+      "nom": "Culture - Récolte",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 50, '', '', '', '')"
+    },
+    "51": {
+      "id": 51,
+      "nom": "Culture - Environnement",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 51, '', '', '', '')"
+    },
+    "52": {
+      "id": 52,
+      "nom": "Culture - Mes notes",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 52, '', '', '', '')"
+    },
+    "53": {
+      "id": 53,
+      "nom": "Culture - Points d",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 53, '', '', '', '')"
+    },
+    "54": {
+      "id": 54,
+      "nom": "Culture - Points d",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 54, '', '', '', '')"
+    },
+    "56": {
+      "id": 56,
+      "nom": "Culture - Map point prélèvement popin ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 56, '', '', '', '')"
+    },
+    "57": {
+      "id": 57,
+      "nom": "Popin ajax - Tracer GPS",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 57, '', '', '', '')"
+    },
+    "58": {
+      "id": 58,
+      "nom": "Popin ajax - Outils",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 58, '', '', '', '')"
+    },
+    "59": {
+      "id": 59,
+      "nom": "Historique ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 59, '', '', '', '')"
+    },
+    "60": {
+      "id": 60,
+      "nom": "Culture - Récolte - popin détails culture",
+      "categorie": "Culture",
+      "navigable": true,
+      "jsNavigation": "go(1, 60, '', '', '', '')"
+    },
+    "100": {
+      "id": 100,
+      "nom": "Matérial - Inventaire",
+      "categorie": "Matériel",
+      "navigable": true,
+      "jsNavigation": "go(1, 100, '', '', '', '')"
+    },
+    "101": {
+      "id": 101,
+      "nom": "Matérial - Ajout et modification",
+      "categorie": "Matériel",
+      "navigable": true,
+      "jsNavigation": "go(1, 101, '', '', '', '')"
+    },
+    "102": {
+      "id": 102,
+      "nom": "Matérial - Ajax fiche Matérial",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 102, '', '', '', '')"
+    },
+    "199": {
+      "id": 199,
+      "nom": "Paramètres",
+      "categorie": "Paramètres",
+      "navigable": true,
+      "jsNavigation": "go(1, 199, '', '', '', '')"
+    },
+    "200": {
+      "id": 200,
+      "nom": "Paramètres",
+      "categorie": "Paramètres",
+      "navigable": true,
+      "jsNavigation": "go(1, 200, '', '', '', '')"
+    },
+    "201": {
+      "id": 201,
+      "nom": "Ouverture porte",
+      "categorie": "Paramètres",
+      "navigable": true,
+      "jsNavigation": "go(1, 201, '', '', '', '')"
+    },
+    "202": {
+      "id": 202,
+      "nom": "Polling Bluetooth",
+      "categorie": "Paramètres",
+      "navigable": false,
+      "jsNavigation": "go(1, 202, '', '', '', '')"
+    },
+    "203": {
+      "id": 203,
+      "nom": "Mode validation",
+      "categorie": "Paramètres",
+      "navigable": false,
+      "jsNavigation": "go(1, 203, '', '', '', '')"
+    },
+    "204": {
+      "id": 204,
+      "nom": "Export pesée",
+      "categorie": "Paramètres",
+      "navigable": false,
+      "jsNavigation": "go(1, 204, '', '', '', '')"
+    },
+    "205": {
+      "id": 205,
+      "nom": "Paramètre baton",
+      "categorie": "Paramètres",
+      "navigable": true,
+      "jsNavigation": "go(1, 205, '', '', '', '')"
+    },
+    "210": {
+      "id": 210,
+      "nom": "Options",
+      "categorie": "Paramètres",
+      "navigable": true,
+      "jsNavigation": "go(1, 210, '', '', '', '')"
+    },
+    "300": {
+      "id": 300,
+      "nom": "Troupeau - Liste fiche animal",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 300, '', '', '', '')"
+    },
+    "301": {
+      "id": 301,
+      "nom": "Troupeau - Fiche animal",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 301, '', '', '', '')"
+    },
+    "302": {
+      "id": 302,
+      "nom": "GMQ",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 302, '', '', '', '')"
+    },
+    "303": {
+      "id": 303,
+      "nom": "Troupeau - Généalogie",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 303, '', '', '', '')"
+    },
+    "304": {
+      "id": 304,
+      "nom": "Troupeau - Généalogie",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 304, '', '', '', '')"
+    },
+    "305": {
+      "id": 305,
+      "nom": "Bovins - Menu",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 305, '', '', '', '')"
+    },
+    "306": {
+      "id": 306,
+      "nom": "Ovins - Menu",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 306, '', '', '', '')"
+    },
+    "307": {
+      "id": 307,
+      "nom": "Caprins - Menu",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 307, '', '', '', '')"
+    },
+    "310": {
+      "id": 310,
+      "nom": "Troupeau - Inventaire",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 310, '', '', '', '')"
+    },
+    "320": {
+      "id": 320,
+      "nom": "Troupeau - Historique",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 320, '', '', '', '')"
+    },
+    "321": {
+      "id": 321,
+      "nom": "Troupeau - Historique ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 321, '', '', '', '')"
+    },
+    "330": {
+      "id": 330,
+      "nom": "Troupeau - Mes notes",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 330, '', '', '', '')"
+    },
+    "331": {
+      "id": 331,
+      "nom": "Troupeau - Historique ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 331, '', '', '', '')"
+    },
+    "332": {
+      "id": 332,
+      "nom": "Troupeau - Popin Mes notes",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 332, '', '', '', '')"
+    },
+    "340": {
+      "id": 340,
+      "nom": "Troupeau - Liste ration",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 340, '', '', '', '')"
+    },
+    "341": {
+      "id": 341,
+      "nom": "Troupeau - Création ou modification ration",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 341, '', '', '', '')"
+    },
+    "342": {
+      "id": 342,
+      "nom": "Troupeau - Distribution ration",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 342, '', '', '', '')"
+    },
+    "350": {
+      "id": 350,
+      "nom": "Troupeau - Performance bovins",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 350, '', '', '', '')"
+    },
+    "351": {
+      "id": 351,
+      "nom": "Troupeau - Performance ovins",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 351, '', '', '', '')"
+    },
+    "352": {
+      "id": 352,
+      "nom": "Troupeau - Performance caprins",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 352, '', '', '', '')"
+    },
+    "360": {
+      "id": 360,
+      "nom": "Troupeau - Popin Entrée cheptel",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 360, '', '', '', '')"
+    },
+    "361": {
+      "id": 361,
+      "nom": "Troupeau - Popin sortie cheptel",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 361, '', '', '', '')"
+    },
+    "362": {
+      "id": 362,
+      "nom": "Troupeau - Popin affectation lot",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 362, '', '', '', '')"
+    },
+    "363": {
+      "id": 363,
+      "nom": "Troupeau - Popin déplacer lot",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 363, '', '', '', '')"
+    },
+    "364": {
+      "id": 364,
+      "nom": "Troupeau - Popin Chaleur",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 364, '', '', '', '')"
+    },
+    "365": {
+      "id": 365,
+      "nom": "Troupeau - Popin IA",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 365, '', '', '', '')"
+    },
+    "366": {
+      "id": 366,
+      "nom": "Troupeau - Popin Saillie",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 366, '', '', '', '')"
+    },
+    "367": {
+      "id": 367,
+      "nom": "Troupeau - Popin Mise à la repro / Mise en lutte",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 367, '', '', '', '')"
+    },
+    "368": {
+      "id": 368,
+      "nom": "Troupeau - Popin Retrait taureau / Fin lutte",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 368, '', '', '', '')"
+    },
+    "369": {
+      "id": 369,
+      "nom": "Troupeau - Popin Avortement",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 369, '', '', '', '')"
+    },
+    "370": {
+      "id": 370,
+      "nom": "Troupeau - Popin vêlage / agnelage",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 370, '', '', '', '')"
+    },
+    "371": {
+      "id": 371,
+      "nom": "Troupeau - Popin adoption",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 371, '', '', '', '')"
+    },
+    "372": {
+      "id": 372,
+      "nom": "Troupeau - Popin sevrage",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 372, '', '', '', '')"
+    },
+    "373": {
+      "id": 373,
+      "nom": "Troupeau - Popin Diagnostic gestation",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 373, '', '', '', '')"
+    },
+    "374": {
+      "id": 374,
+      "nom": "Troupeau - Popin Traitement",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 374, '', '', '', '')"
+    },
+    "375": {
+      "id": 375,
+      "nom": "Troupeau - Popin Onglons",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 375, '', '', '', '')"
+    },
+    "376": {
+      "id": 376,
+      "nom": "Troupeau - Popin Ecornage",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 376, '', '', '', '')"
+    },
+    "377": {
+      "id": 377,
+      "nom": "Troupeau - Popin Tonte",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 377, '', '', '', '')"
+    },
+    "378": {
+      "id": 378,
+      "nom": "Troupeau - Popin Affouragement",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 378, '', '', '', '')"
+    },
+    "379": {
+      "id": 379,
+      "nom": "Troupeau - Popin carte",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 379, '', '', '', '')"
+    },
+    "380": {
+      "id": 380,
+      "nom": "Troupeau - Popin catégorie",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 380, '', '', '', '')"
+    },
+    "381": {
+      "id": 381,
+      "nom": "Troupeau - Popin Rebouclage",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 381, '', '', '', '')"
+    },
+    "382": {
+      "id": 382,
+      "nom": "Troupeau - Popin Observation",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 382, '', '', '', '')"
+    },
+    "383": {
+      "id": 383,
+      "nom": "Troupeau - Popin Eponge (speciesid = 2 only)",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 383, '', '', '', '')"
+    },
+    "384": {
+      "id": 384,
+      "nom": "Troupeau - Popin Allaitement artificiel",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 384, '', '', '', '')"
+    },
+    "385": {
+      "id": 385,
+      "nom": "Troupeau - Entrée cheptel - Popin Création des exploitations externes",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 385, '', '', '', '')"
+    },
+    "386": {
+      "id": 386,
+      "nom": "Troupeau - JSON Exploitations externes",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 386, '', '', '', '')"
+    },
+    "387": {
+      "id": 387,
+      "nom": "Liste des lots actuels",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 387, '', '', '', '')"
+    },
+    "388": {
+      "id": 388,
+      "nom": "Troupeau - Rechargement catégories actuelles",
+      "categorie": "Troupeau",
+      "navigable": false,
+      "jsNavigation": "go(1, 388, '', '', '', '')"
+    },
+    "389": {
+      "id": 389,
+      "nom": "Troupeau - Popin mère agneaux",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 389, '', '', '', '')"
+    },
+    "390": {
+      "id": 390,
+      "nom": "Synchro mouvements",
+      "categorie": "Troupeau",
+      "navigable": false,
+      "jsNavigation": "go(1, 390, '', '', '', '')"
+    },
+    "391": {
+      "id": 391,
+      "nom": "Troupeau - Appel ajax vélage / agnelage",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 391, '', '', '', '')"
+    },
+    "392": {
+      "id": 392,
+      "nom": "Troupeau - Appel ajax vérif numéro de travail",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 392, '', '', '', '')"
+    },
+    "393": {
+      "id": 393,
+      "nom": "Troupeau - Entrée cheptel - Popin Création des commerce de bétail vivant",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 393, '', '', '', '')"
+    },
+    "394": {
+      "id": 394,
+      "nom": "Troupeau - JSON Exploitations externes",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 394, '', '', '', '')"
+    },
+    "395": {
+      "id": 395,
+      "nom": "Troupeau - Entrée cheptel - Popin Création des clients boucherie",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 395, '', '', '', '')"
+    },
+    "396": {
+      "id": 396,
+      "nom": "Troupeau - JSON Client Boucherie",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 396, '', '', '', '')"
+    },
+    "397": {
+      "id": 397,
+      "nom": "Troupeau - JSON Client Boucherie",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 397, '', '', '', '')"
+    },
+    "398": {
+      "id": 398,
+      "nom": "Bouclage",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 398, '', '', '', '')"
+    },
+    "500": {
+      "id": 500,
+      "nom": "Volailles - Liste des batiments",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 500, '', '', '', '')"
+    },
+    "501": {
+      "id": 501,
+      "nom": "Volailles - Batiment",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "goBuilding(moduleId, areaId)"
+    },
+    "502": {
+      "id": 502,
+      "nom": "Volailles - Ajax lots clotures",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 502, '', '', '', '')"
+    },
+    "503": {
+      "id": 503,
+      "nom": "Volailles - Ajax events",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 503, '', '', '', '')"
+    },
+    "505": {
+      "id": 505,
+      "nom": "Volailles - Menu",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 505, '', '', '', '')"
+    },
+    "506": {
+      "id": 506,
+      "nom": "Volailles - Menu",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 506, '', '', '', '')"
+    },
+    "507": {
+      "id": 507,
+      "nom": "Pondeuse - Menu",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 507, '', '', '', '')"
+    },
+    "510": {
+      "id": 510,
+      "nom": "Volailles - Liste des lots",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 510, '', '', '', '')"
+    },
+    "511": {
+      "id": 511,
+      "nom": "Volailles - Ajax lots clotures",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 511, '', '', '', '')"
+    },
+    "512": {
+      "id": 512,
+      "nom": "Canard - LOT",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "goPoultryBatch(batchId, farmId)"
+    },
+    "513": {
+      "id": 513,
+      "nom": "Volailles - Plan alimentation Phase 2",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 513, '', '', '', '')"
+    },
+    "514": {
+      "id": 514,
+      "nom": "Volailles - Observations",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 514, '', '', '', '')"
+    },
+    "515": {
+      "id": 515,
+      "nom": "Volailles - Stats Lot visite elevage",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 515, '', '', '', '')"
+    },
+    "516": {
+      "id": 516,
+      "nom": "Volailles - Plan alimentation elevage",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 516, '', '', '', '')"
+    },
+    "517": {
+      "id": 517,
+      "nom": "Canard - LOT Plannifie",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 517, '', '', '', '')"
+    },
+    "518": {
+      "id": 518,
+      "nom": "Volailles - Ajax Liste Actions",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 518, '', '', '', '')"
+    },
+    "519": {
+      "id": 519,
+      "nom": "Volailles - Ajax Liste Livraison",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 519, '', '', '', '')"
+    },
+    "520": {
+      "id": 520,
+      "nom": "Canard - Historique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 520, '', '', '', '')"
+    },
+    "521": {
+      "id": 521,
+      "nom": "Canard - Historique ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 521, '', '', '', '')"
+    },
+    "522": {
+      "id": 522,
+      "nom": "Volailles - Ajax Liste Documents",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 522, '', '', '', '')"
+    },
+    "525": {
+      "id": 525,
+      "nom": "Volailles - Fiche Lot",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 525, '', '', '', '')"
+    },
+    "526": {
+      "id": 526,
+      "nom": "Volailles - Fiche Lot AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 526, '', '', '', '')"
+    },
+    "527": {
+      "id": 527,
+      "nom": "Volailles - Graphe",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 527, '', '', '', '')"
+    },
+    "530": {
+      "id": 530,
+      "nom": "Volailles - Événement prophylaxie",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 530, '', '', '', '')"
+    },
+    "534": {
+      "id": 534,
+      "nom": "Palmipède - Résultats analyse",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 534, '', '', '', '')"
+    },
+    "535": {
+      "id": 535,
+      "nom": "Volailles - Tableau clinique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 535, '', '', '', '')"
+    },
+    "540": {
+      "id": 540,
+      "nom": "Volailles - Mise en place élevage",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 540, '', '', '', '')"
+    },
+    "541": {
+      "id": 541,
+      "nom": "Volailles - Transfert",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 541, '', '', '', '')"
+    },
+    "542": {
+      "id": 542,
+      "nom": "Volailles - Fiche ICA",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "openPoultryModal(moduleId, 542, null, batchId, 'write')"
+    },
+    "543": {
+      "id": 543,
+      "nom": "Volailles - Fiche ICA AJAX PLANNED",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 543, '', '', '', '')"
+    },
+    "544": {
+      "id": 544,
+      "nom": "Volailles - Fiche ICA AJAX TECHNICAL",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 544, '', '', '', '')"
+    },
+    "545": {
+      "id": 545,
+      "nom": "Volailles - Enlèvement",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 545, '', '', '', '')"
+    },
+    "546": {
+      "id": 546,
+      "nom": "Volailles - Enlèvement AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 546, '', '', '', '')"
+    },
+    "547": {
+      "id": 547,
+      "nom": "Volailles - Nettoyage et désinfection",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 547, '', '', '', '')"
+    },
+    "548": {
+      "id": 548,
+      "nom": "Volailles - Ajax Protocol Nettoyage et désinfection",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 548, '', '', '', '')"
+    },
+    "549": {
+      "id": 549,
+      "nom": "Prestaire nettoyage et desinfaction",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 549, '', '', '', '')"
+    },
+    "550": {
+      "id": 550,
+      "nom": "Volailles - MEP PFG",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 550, '', '', '', '')"
+    },
+    "551": {
+      "id": 551,
+      "nom": "Volailles - Abattoir",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 551, '', '', '', '')"
+    },
+    "552": {
+      "id": 552,
+      "nom": "Volailles - Abattoir AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 552, '', '', '', '')"
+    },
+    "553": {
+      "id": 553,
+      "nom": "Volailles - Contrôle et désinfection",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 553, '', '', '', '')"
+    },
+    "554": {
+      "id": 554,
+      "nom": "Volailles - Fiche ICA AJAX Phase 2",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 554, '', '', '', '')"
+    },
+    "555": {
+      "id": 555,
+      "nom": "Volailles - Analyse Salmonelle",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 555, '', '', '', '')"
+    },
+    "556": {
+      "id": 556,
+      "nom": "Volailles - Fiche ICA AJAX Phase 2",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 556, '', '', '', '')"
+    },
+    "557": {
+      "id": 557,
+      "nom": "Volailles - Fiche ICA",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 557, '', '', '', '')"
+    },
+    "558": {
+      "id": 558,
+      "nom": "Volailles - Fiche ICA Consultation",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 558, '', '', '', '')"
+    },
+    "559": {
+      "id": 559,
+      "nom": "Volailles - Fiche ICA load reading",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 559, '', '', '', '')"
+    },
+    "560": {
+      "id": 560,
+      "nom": "Volailles - Releve ELE",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 560, '', '', '', '')"
+    },
+    "561": {
+      "id": 561,
+      "nom": "Palmipèdes - Conf. Livraison Animaux",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 561, '', '', '', '')"
+    },
+    "565": {
+      "id": 565,
+      "nom": "Volailles - Transfert",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 565, '', '', '', '')"
+    },
+    "566": {
+      "id": 566,
+      "nom": "Starting mulching chonometer",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 566, '', '', '', '')"
+    },
+    "567": {
+      "id": 567,
+      "nom": "Volailles - Paillage",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 567, '', '', '', '')"
+    },
+    "568": {
+      "id": 568,
+      "nom": "Volailles - Enrichissements du milieu",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 568, '', '', '', '')"
+    },
+    "570": {
+      "id": 570,
+      "nom": "Volailles - Releve PFG",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 570, '', '', '', '')"
+    },
+    "575": {
+      "id": 575,
+      "nom": "Volailles - Annonce des poids aux abattoirs",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 575, '', '', '', '')"
+    },
+    "580": {
+      "id": 580,
+      "nom": "Volailles - Carte technicien liste des farm",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 580, '', '', '', '')"
+    },
+    "581": {
+      "id": 581,
+      "nom": "Détails action générique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 581, '', '', '', '')"
+    },
+    "582": {
+      "id": 582,
+      "nom": "Détails action générique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 582, '', '', '', '')"
+    },
+    "583": {
+      "id": 583,
+      "nom": "Détails action générique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 583, '', '', '', '')"
+    },
+    "585": {
+      "id": 585,
+      "nom": "Détails action générique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 585, '', '', '', '')"
+    },
+    "586": {
+      "id": 586,
+      "nom": "Alertes",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 586, '', '', '', '')"
+    },
+    "590": {
+      "id": 590,
+      "nom": "Volailles - Graphe",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 590, '', '', '', '')"
+    },
+    "591": {
+      "id": 591,
+      "nom": "Volailles - Graphe",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 591, '', '', '', '')"
+    },
+    "592": {
+      "id": 592,
+      "nom": "Volailles - Tableau",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 592, '', '', '', '')"
+    },
+    "594": {
+      "id": 594,
+      "nom": "Volailles - Fiche Fin de lot",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 594, '', '', '', '')"
+    },
+    "596": {
+      "id": 596,
+      "nom": "Volailles - Commemoratifs",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 596, '', '', '', '')"
+    },
+    "598": {
+      "id": 598,
+      "nom": "Volailles - Fiche batiment",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 598, '', '', '', '')"
+    },
+    "600": {
+      "id": 600,
+      "nom": "Volailles - Visite elevage",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 600, '', '', '', '')"
+    },
+    "601": {
+      "id": 601,
+      "nom": "Volailles - Stats Lot visite elevage",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 601, '', '', '', '')"
+    },
+    "610": {
+      "id": 610,
+      "nom": "Volailles - Visite production de phase 2",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 610, '', '', '', '')"
+    },
+    "611": {
+      "id": 611,
+      "nom": "Technicien Volailles - Stats visite production de phase 2",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 611, '', '', '', '')"
+    },
+    "620": {
+      "id": 620,
+      "nom": "Technicien Technicien Volailles - Liste des batiments",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 620, '', '', '', '')"
+    },
+    "621": {
+      "id": 621,
+      "nom": "Technicien Volailles - Batiment",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "goBuildingTech(farmId, areaId)"
+    },
+    "622": {
+      "id": 622,
+      "nom": "Technicien Volailles - Ajax lots clotures",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 622, '', '', '', '')"
+    },
+    "623": {
+      "id": 623,
+      "nom": "Volailles - Ajax events",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 623, '', '', '', '')"
+    },
+    "630": {
+      "id": 630,
+      "nom": "Technicien Volailles - Liste des lots",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 630, '', '', '', '')"
+    },
+    "631": {
+      "id": 631,
+      "nom": "Technicien Volailles - Ajax lots clotures",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 631, '', '', '', '')"
+    },
+    "632": {
+      "id": 632,
+      "nom": "Lot - Historique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 632, '', '', '', '')"
+    },
+    "633": {
+      "id": 633,
+      "nom": "Technicien Volailles - Plan alimentation phase 2",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 633, '', '', '', '')"
+    },
+    "640": {
+      "id": 640,
+      "nom": "Inventaire éleveurs Canard",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 640, '', '', '', '')"
+    },
+    "641": {
+      "id": 641,
+      "nom": "Fiche Exploitation",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "goExploitation(farmId)"
+    },
+    "642": {
+      "id": 642,
+      "nom": "Liste Exploitations",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 642, '', '', '', '')"
+    },
+    "650": {
+      "id": 650,
+      "nom": "Canard - Historique",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 650, '', '', '', '')"
+    },
+    "651": {
+      "id": 651,
+      "nom": "Canard - Historique ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 651, '', '', '', '')"
+    },
+    "660": {
+      "id": 660,
+      "nom": "Pack audit",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 660, '', '', '', '')"
+    },
+    "800": {
+      "id": 800,
+      "nom": "Réseau social - Mes partages",
+      "categorie": "ReseauSocial",
+      "navigable": true,
+      "jsNavigation": "go(1, 800, '', '', '', '')"
+    },
+    "810": {
+      "id": 810,
+      "nom": "Réseau social - Accueil groupe",
+      "categorie": "ReseauSocial",
+      "navigable": true,
+      "jsNavigation": "go(1, 810, '', '', '', '')"
+    },
+    "811": {
+      "id": 811,
+      "nom": "Réseau social - Messages ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 811, '', '', '', '')"
+    },
+    "820": {
+      "id": 820,
+      "nom": "Réseau social - Un message",
+      "categorie": "ReseauSocial",
+      "navigable": true,
+      "jsNavigation": "go(1, 820, '', '', '', '')"
+    },
+    "3611": {
+      "id": 3611,
+      "nom": "Troupeau - Popin Traitement AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3611, '', '', '', '')"
+    },
+    "3613": {
+      "id": 3613,
+      "nom": "Troupeau - Popin Traitement AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3613, '', '', '', '')"
+    },
+    "3614": {
+      "id": 3614,
+      "nom": "Troupeau - Popin sortie cheptel AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3614, '', '', '', '')"
+    },
+    "3653": {
+      "id": 3653,
+      "nom": "Troupeau - Popin IA ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3653, '', '', '', '')"
+    },
+    "3660": {
+      "id": 3660,
+      "nom": "Troupeau - Popin Saillie",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 3660, '', '', '', '')"
+    },
+    "3673": {
+      "id": 3673,
+      "nom": "Troupeau - Popin Mise à la repro / Mise en lutte ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3673, '', '', '', '')"
+    },
+    "3701": {
+      "id": 3701,
+      "nom": "Troupeau - Popin Delivery AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3701, '', '', '', '')"
+    },
+    "3702": {
+      "id": 3702,
+      "nom": "Troupeau - Popin Mise Bas",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 3702, '', '', '', '')"
+    },
+    "3742": {
+      "id": 3742,
+      "nom": "Troupeau - Popin Traitement AJAX 2",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3742, '', '', '', '')"
+    },
+    "3743": {
+      "id": 3743,
+      "nom": "Troupeau - Popin Traitement",
+      "categorie": "Troupeau",
+      "navigable": true,
+      "jsNavigation": "go(1, 3743, '', '', '', '')"
+    },
+    "3744": {
+      "id": 3744,
+      "nom": "Troupeau - Popin Traitement AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3744, '', '', '', '')"
+    },
+    "3982": {
+      "id": 3982,
+      "nom": "Bouclage - Gender AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3982, '', '', '', '')"
+    },
+    "3983": {
+      "id": 3983,
+      "nom": "Bouclage - Work code AJAX",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 3983, '', '', '', '')"
+    },
+    "5101": {
+      "id": 5101,
+      "nom": "Volailles - Liste des lots",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 5101, '', '', '', '')"
+    },
+    "5501": {
+      "id": 5501,
+      "nom": "Volailles - MEP PFG",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 5501, '', '', '', '')"
+    },
+    "5599": {
+      "id": 5599,
+      "nom": "Volailles - Fiche ICA load reading weight",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 5599, '', '', '', '')"
+    },
+    "5754": {
+      "id": 5754,
+      "nom": "Palmipèdes - Annonce des poids aux abattoirs ajax",
+      "categorie": "AJAX",
+      "navigable": false,
+      "jsNavigation": "go(1, 5754, '', '', '', '')"
+    },
+    "5851": {
+      "id": 5851,
+      "nom": "Liste des lots avec action",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 5851, '', '', '', '')"
+    },
+    "5861": {
+      "id": 5861,
+      "nom": "Liste des lots avec alertes",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 5861, '', '', '', '')"
+    },
+    "6005": {
+      "id": 6005,
+      "nom": "Canards - Fiche Fin de lot Consultation",
+      "categorie": "Volailles",
+      "navigable": true,
+      "jsNavigation": "go(1, 6005, '', '', '', '')"
+    }
+  }
+}
