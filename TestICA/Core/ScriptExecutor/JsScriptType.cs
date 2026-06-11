@@ -7,6 +7,7 @@ public class Enum
         InspecteurButton,
         InspecteurPopup,
         InspecteurForm,
-        PageAnalyser
+        PageAnalyser,
+        CartoMapAnalyser,
     }
 }

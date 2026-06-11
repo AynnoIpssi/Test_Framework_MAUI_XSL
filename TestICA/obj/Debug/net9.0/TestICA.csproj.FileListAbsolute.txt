@@ -458,3 +458,4 @@ C:\Dev\test3\FicheTest\TestICA\obj\Debug\net9.0\TestICA.pdb
 C:\Dev\test3\FicheTest\TestICA\obj\Debug\net9.0\TestICA.genruntimeconfig.cache
 C:\Dev\test3\FicheTest\TestICA\obj\Debug\net9.0\ref\TestICA.dll
 C:\Dev\test3\FicheTest\TestICA\obj\Debug\net9.0\TestICA.sourcelink.json
+C:\Dev\test3\FicheTest\TestICA\bin\Debug\net9.0\Data\AppMap.json

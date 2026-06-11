@@ -97,6 +97,8 @@ public class JsExecutor
             Enum.JsScriptType.InspecteurButton => jsonResult, 
             Enum.JsScriptType.InspecteurPopup  => jsonResult,
             Enum.JsScriptType.InspecteurForm   => jsonResult,
+            Enum.JsScriptType.CartoMapAnalyser => jsonResult, 
+
             _ => throw new ArgumentException("Type de script non géré.")
         };
     }

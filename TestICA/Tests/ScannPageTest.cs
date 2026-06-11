@@ -1,66 +1,88 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using Serilog;
 using TestICA.Core.Starter;
 using TestICA.Core.SmartLocator;
-using TestICA.Core.Shell;
 
 namespace TestICA.Tests;
 
 [TestFixture]
-public class SmartLocatorTest : AppiumStarter
+public class ScannPage: AppiumStarter
 {
     [Test]
-    public void VerifierDemarrageEtScanPageComplexe()
+    public void Lancer_Analyse_Profonde_WebView()
     {
-        SmartShell.Launch();
-        Log.Information("=== [DEBUT] Lancement du scénario de test complet ===");
+        // Ces lignes écrivent partout (Console NUnit + Logs)
+        Console.WriteLine("=======================================================================");
+        Console.WriteLine("=== [DÉBUT] EXTRACTION DES PARAMÈTRES DU BODY (INPUTS JS) ===");
+        Console.WriteLine("=======================================================================");
+        Log.Information("=== [DÉBUT] EXTRACTION DES PARAMÈTRES DU BODY (INPUTS JS) ===");
 
-        // 1. Démarre l'application (appelle InitDriver du AppiumStarter)
-        InitDriver();
-
-        // --- BASCULE DE CONTEXTE (NATIF TO WEBVIEW) ---
         try
         {
-            SmartConsole.Initialize();
-            SmartConsole.Log("I", "ContextManager", "Recherche des contextes disponibles...");
+            // 1. Initialisation standard du Driver Appium
+            InitDriver();
+            System.Threading.Thread.Sleep(3000); // Sécurité pour laisser l'application charger
 
-            // Pause pour laisser l'appli charger sa WebView
-            System.Threading.Thread.Sleep(3000);
+            // 2. Bascule indispensable vers la WebView
+            Console.WriteLine("[Robot] Bascule vers le contexte WebView...");
+            BasculeVersWebView();
+            Console.WriteLine($"[Robot] Contexte actuel : {Driver!.Context}");
 
-            string? webviewContext = null;
+            // 3. Script JS pour capturer l'intégralité des inputs/paramètres du body
+            var jsExecutor = (IJavaScriptExecutor)Driver;
             
-            foreach (var context in Driver!.Contexts)
-            {
-                SmartConsole.Log("I", "ContextManager", $"Mode détecté : {context}");
-                if (context.Contains("WEBVIEW"))
-                {
-                    webviewContext = context;
-                }
-            }
+            string scriptExtractionPure = @"
+                var inputs = document.querySelectorAll('input, select, textarea');
+                var lignes = [];
+                
+                lignes.push('--- [TOUS LES CHAMPS DE SAISIE DETECTÉS DANS LE BODY] ---');
+                
+                inputs.forEach(function(el) {
+                    // On filtre les boutons pour n'avoir que les variables et les données
+                    if (el.type === 'button' || el.type === 'submit' || el.type === 'reset') return;
+                    
+                    var id = el.id || el.name || '[SANS ID/NAME]';
+                    var val = el.value || '';
+                    
+                    // Aligner proprement le texte (35 caractères de large pour l'ID)
+                    var idFormate = id.padEnd(35);
+                    
+                    lignes.push('ID: ' + idFormate + ' | Valeur: \'' + val + '\'');
+                });
+                
+                return lignes.join('\n');
+            ";
 
-            if (webviewContext != null)
+            Console.WriteLine("[Robot] Scan de la page en cours via injection JS...");
+            string resultatParametresBody = jsExecutor.ExecuteScript(scriptExtractionPure).ToString();
+            
+            // 4. FORÇAGE DE L'AFFICHAGE DANS L'OUTPUT DE NUNIT
+            // On découpe par ligne pour être sûr que la console de test ne coupe pas le texte
+            string[] lignesResultat = resultatParametresBody.Split('\n');
+            
+            Console.WriteLine("\n📊 --- ENTRÉE DU RAPPORT DANS L'OUTPUT DE TEST ---");
+            foreach (var ligne in lignesResultat)
             {
-                Driver.Context = webviewContext;
-                SmartConsole.Log("I", "ContextManager", $"Bascule réussie sur le mode : {webviewContext}");
+                // Écrit dans l'onglet 'Output' du test sous Visual Studio / Rider
+                Console.WriteLine(ligne); 
+                
+                // Garde aussi une copie propre dans tes fichiers de logs Serilog au cas où
+                Log.Information(ligne); 
             }
-            else
-            {
-                SmartConsole.Log("W", "ContextManager", "Aucune WebView détectée. L'application est lue à 100% en Natif Android.");
-            }
+            Console.WriteLine("📊 --- FIN DU RAPPORT ---\n");
+
         }
         catch (Exception ex)
         {
-            SmartConsole.Log("E", "ContextManager", $"Erreur lors de la bascule de contexte : {ex.Message}");
+            Console.WriteLine($"❌ Erreur affichée dans la console : {ex.Message}");
+            Log.Error($"❌ Une erreur est survenue durant l'extraction : {ex.Message}");
         }
 
-        // 2. Connecte le driver au SmartLocator
-        SmartLocator.Init(Driver);
-
-        // 3. Lance l'analyse
-        SmartLocator.AnalyzeCurrentPage();
-
-        System.Threading.Thread.Sleep(5000); 
-        Assert.Pass("Le moteur a terminé son cycle d'analyse.");
+        Console.WriteLine("=======================================================================");
+        Console.WriteLine("=== [FIN] Extraction terminée. Tu peux copier le bloc ci-dessus ===");
+        Console.WriteLine("=======================================================================");
     }
 }

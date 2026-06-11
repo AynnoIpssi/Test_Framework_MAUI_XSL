@@ -1,5 +1,22 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c1240d12_002D8d90_002D4ab0_002D924e_002Db958bc828428/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;TestICA&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Dev\test3\FicheTest\TestICA" Presentation="&amp;lt;TestICA&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=71b599fc_002D704e_002D4778_002Da9ee_002D0f8bf8dd21e4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PageAnalyserRobustTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.PageAnalyserRobustTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.ScannPage&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.TestVarICA&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.TestSimpleGo&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.NavigationParcoursIca&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.TrouverOrdreGo&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A4263093-F6BA-477B-8677-237ED5D50F5E::net9.0::TestICA.Tests.OuvrirFicheIcaViaModal&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/SpawnedProcessesKnownList/=powershell_002Eexe/@EntryIndexedValue">DoNothing</s:String></wpf:ResourceDictionary>
