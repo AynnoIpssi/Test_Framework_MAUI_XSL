@@ -21,7 +21,7 @@ public class AppiumWaiterServiceIsolatedTest : BaseTest
         var waiterOptions = AppConfigProvider.GetWaiterOptions();
         var waiter = new AppiumWaiterService(driver, waiterOptions);
 
-        // TODO: remplacer par le vrai sélecteur du champ identifiant sur l'écran de login
+        //TODO: remplacer par le vrai sélecteur du champ identifiant sur l'écran de login
         bool loginScreenReached = waiter.WaitForElement("#login-username");
 
         Assert.That(loginScreenReached, Is.True, "L'écran de connexion n'a jamais été détecté après le lancement de l'app.");
