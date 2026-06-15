@@ -1,8 +1,0 @@
-{
-  "TestId": "TC01_Login",
-  "Description": "Vérification de la connexion avec des identifiants valides",
-  "ResultatAttendu": "L'utilisateur accède à l'application",
-  "Email": "baoba.uat.tessa1@yopmail.com",
-  "Password": "@123456789Abc",
-  "DevraitReussir": true
-}
