@@ -871,4 +871,4 @@ public class MonTest : BaseTest  // Hérite de BaseTest
 
 ---
 
-*Documentation générée le 15 juin 2026 — BaobaTesterBox v1.0 (en développement)*
+*Documentation Créer le 12 juin 2026 — BaobaTesterBox v1.0 (en développement)*
