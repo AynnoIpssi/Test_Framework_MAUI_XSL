@@ -6,6 +6,8 @@ using OpenQA.Selenium.Support.UI;
 using BaobaTesterBox.Core.Loggings;
 using BaobaTesterBox.Core.Locators;
 using BaobaTesterBox.Core.ScriptExecutor;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BaobaTesterBox.Core.Interactions;
 
@@ -103,6 +105,39 @@ public class AppiumElementActionsService
             throw;
         }
     }
+    
+    /// <summary>
+    /// Remplit une liste de champs identifiés par leur id (input, select ou textarea) via script externe.
+    /// </summary>
+    public Dictionary<string, string> FillFieldsById(Dictionary<string, string> valeurs)
+    {
+        if (valeurs == null || valeurs.Count == 0)
+        {
+            AppiumLoggerService.LogWarn("Aucune valeur fournie pour la saisie par id.", Origine);
+            return new Dictionary<string, string>();
+        }
+
+        try
+        {
+            var json = JsonConvert.SerializeObject(valeurs);
+            AppiumLoggerService.LogInfo($"Lancement de la saisie par id pour {valeurs.Count} champ(s)...", Origine);
+
+            var resultatJson = _jsExecutor.Execute(BaobaTesterBox.Core.ScriptExecutor.Enum.JsScriptType.AppiumFillFormFields, json) as string;
+            var resultats = string.IsNullOrWhiteSpace(resultatJson)
+                ? new Dictionary<string, string>()
+                : JsonConvert.DeserializeObject<Dictionary<string, string>>(resultatJson) ?? new Dictionary<string, string>();
+
+            foreach (var (id, statut) in resultats)
+                AppiumLoggerService.LogInfo($"Saisie '{id}' → {statut}", Origine);
+
+            return resultats;
+        }
+        catch (Exception ex)
+        {
+            AppiumLoggerService.LogError($"Échec de la saisie par id. Erreur : {ex.Message}", Origine);
+            throw;
+        }
+    }   
     
     /// <summary>
     /// Force le focus et le clic sur un élément du DOM via son sélecteur CSS à l'aide d'un script externe.

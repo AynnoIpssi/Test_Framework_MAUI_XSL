@@ -59,17 +59,40 @@
     <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumNavigationModuleGo.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumScrollToElement.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumGetAlertText.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumCloseAlert.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumCheckIcaReadingMessage.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\FeedFicheIca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumFormFieldsFetchVisible.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumFormFields.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\AppiumFillFormFields.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="src\BaobaTesterBox.Cli\Commands\" />
     <Folder Include="src\BaobaTesterBox.Core\Database\" />
-    <Folder Include="src\BaobaTesterBox.Domain\Pages\" />
     <Folder Include="src\BaobaTesterBox.Domain\Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="ScriptJS\**\*.*">
+    <None Include="src\BaobaTesterBox.Core\JsExecutor\ScriptJS\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

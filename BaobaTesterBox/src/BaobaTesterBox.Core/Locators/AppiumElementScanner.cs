@@ -1,4 +1,3 @@
-// Fichier : src/BaobaTesterBox.Core/Locators/AppiumElementScanner.cs
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,6 +8,8 @@ using BaobaTesterBox.Core.Config.Models;
 using BaobaTesterBox.Domain.Configuration;
 using BaobaTesterBox.Core.Loggings;
 using BaobaTesterBox.Core.ScriptExecutor;
+using Newtonsoft.Json;
+using BaobaTesterBox.Domain.Models;
 
 namespace BaobaTesterBox.Core.Locators;
 
@@ -32,13 +33,9 @@ public static class AppiumElementScanner
     private static void SwitchToWebViewContext()
     {
         if (_driver == null) return;
-
-        // Si on est déjà dans la WebView, pas besoin de refaire tout le traitement
         if (_driver.Context.StartsWith("WEBVIEW")) return;
 
         AppiumLoggerService.LogInfo("Recherche des contextes disponibles...", OrigineLog);
-        
-        // Récupère la liste (ex: ["NATIVE_APP", "WEBVIEW_com.company.baoba"])
         var contexts = _driver.Contexts; 
 
         foreach (var context in contexts)
@@ -47,7 +44,7 @@ public static class AppiumElementScanner
             
             if (context.StartsWith("WEBVIEW", StringComparison.OrdinalIgnoreCase))
             {
-                _driver.Context = context; // Le switch magique !
+                _driver.Context = context;
                 AppiumLoggerService.LogInfo($"Bascule réussie sur le contexte WebView : {context}", OrigineLog);
                 return;
             }
@@ -73,7 +70,6 @@ public static class AppiumElementScanner
             return;
         }
 
-        // AJOUT : Étape cruciale pour ne pas scanner dans le vide !
         try
         {
             SwitchToWebViewContext();
@@ -179,11 +175,9 @@ public static class AppiumElementScanner
                         }
 
                         webElement = jsElement;
-                        AppiumLoggerService.LogDebug($"Récupéré via JS -> Clé : \"{smartId}\"", "Fingerprint");
                     }
 
                     _cache.Add(smartId, webElement);
-                    AppiumLoggerService.LogDebug($"Indexé -> Clé : \"{smartId}\" | XPath: {elementXPath}", "Fingerprint");
                 }
                 catch (Exception ex)
                 {
@@ -209,12 +203,8 @@ public static class AppiumElementScanner
         return _cache.TryGetValue(smartId, out var element) ? element : null;
     }
     
-    /// <summary>
-    /// Analyse le DOM en arrière-plan via le script externe et retourne une liste réutilisable contenant UNIQUEMENT les inputs visibles à l'écran.
-    /// </summary>
     public static List<IWebElement> GetVisibleInputsOnly()
     {
-        
         if (_driver == null)
         {
             AppiumLoggerService.LogError("Impossible d'extraire les inputs : Le Driver Appium n'est pas initialisé.", OrigineLog);
@@ -223,32 +213,211 @@ public static class AppiumElementScanner
 
         try
         {
-            // 1. On s'assure d'être dans le bon contexte pour exécuter le JS
             SwitchToWebViewContext();
-
             AppiumLoggerService.LogInfo("=== EXTRACTION DES INPUTS VISIBLES ===", OrigineLog);
 
-            // 2. Appel de ton exécuteur qui charge et applique le fichier 'AppiumInputFetchVisible.js'
-            // Au lieu de écrire juste "Enum.JsScriptType...", on préfixe avec ton namespace :
-            var result = _jsExecutor.Execute(BaobaTesterBox.Core.ScriptExecutor.Enum.JsScriptType.AppiumInputFetchVisible) as IReadOnlyCollection<IWebElement>;
+            var result = _jsExecutor.Execute(BaobaTesterBox.Core.ScriptExecutor.Enum.JsScriptType.AppiumInputFetchVisible);
 
-            // 3. Appium remonte les éléments sous forme de ReadOnlyCollection<IWebElement>
             if (result is IReadOnlyCollection<IWebElement> elementsCollection)
             {
                 AppiumLoggerService.LogInfo($"📊 Extraction réussie : {elementsCollection.Count} input(s) visible(s) détecté(s).", OrigineLog);
-            
-                // On retourne une liste C# standard, dynamique et réutilisable
                 return new List<IWebElement>(elementsCollection);
             }
-        
-            AppiumLoggerService.LogWarn("Le script d'extraction n'a renvoyé aucun élément valide.", OrigineLog);
         }
         catch (Exception ex)
         {
             AppiumLoggerService.LogError($"Erreur critique lors de la récupération des inputs visibles : {ex.Message}", OrigineLog);
         }
 
-        // Sécurité : on retourne une liste vide plutôt qu'un null pour éviter les NullReferenceException dans tes tests
         return new List<IWebElement>();
+    }
+    
+    public static AppiumFormScanResult GetVisibleFormFields()
+    {
+        var resultat = new AppiumFormScanResult();
+
+        if (_driver == null)
+        {
+            AppiumLoggerService.LogError("Impossible de scanner les champs : Le Driver n'est pas initialisé.", OrigineLog);
+            return resultat;
+        }
+
+        try
+        {
+            SwitchToWebViewContext();
+            AppiumLoggerService.LogInfo("=== ANALYSE DES CHAMPS VISIBLES (input + select + textarea) ===", OrigineLog);
+
+            var resultatJson = _jsExecutor.Execute(BaobaTesterBox.Core.ScriptExecutor.Enum.JsScriptType.AppiumFormFieldsFetchVisible) as string;
+
+            if (string.IsNullOrWhiteSpace(resultatJson))
+            {
+                AppiumLoggerService.LogWarn("Le scan des champs n'a renvoyé aucune donnée.", OrigineLog);
+                return resultat;
+            }
+
+            resultat = JsonConvert.DeserializeObject<AppiumFormScanResult>(resultatJson) ?? new AppiumFormScanResult();
+            AppiumLoggerService.LogInfo($"📋 Mode : {resultat.Mode} | {resultat.Fields.Count} champ(s) visible(s) détecté(s).", OrigineLog);
+        }
+        catch (Exception ex)
+        {
+            AppiumLoggerService.LogError($"Erreur pendant le scan des champs visibles : {ex.Message}", OrigineLog);
+        }
+
+        return resultat;
+    }
+
+    /// <summary>
+    /// 🟢 NOUVELLE MÉTHODE PROPRE : Extrait de façon isolée les informations du lot actif (#batch) dans le DOM
+    /// </summary>
+    public static Dictionary<string, string> ScanCurrentBatchInformation()
+    {
+        var lotInfos = new Dictionary<string, string>();
+        
+        if (_driver == null)
+        {
+            AppiumLoggerService.LogError("Impossible de scanner le lot : Le Driver n'est pas initialisé.", OrigineLog);
+            return lotInfos;
+        }
+
+        try
+        {
+            SwitchToWebViewContext();
+            var html = GetFreshPageSource();
+            if (string.IsNullOrEmpty(html)) return lotInfos;
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+
+            var selectBatchNode = doc.DocumentNode.SelectSingleNode("//select[@id='batch']");
+            if (selectBatchNode == null)
+            {
+                AppiumLoggerService.LogWarn("❌ [SCAN BATCH] Élément <select id='batch'> introuvable sur cette page.", OrigineLog);
+                return lotInfos;
+            }
+
+            var options = selectBatchNode.SelectNodes(".//option");
+            if (options == null || options.Count == 0) return lotInfos;
+
+            string tousLesLots = "";
+            foreach (var option in options)
+            {
+                string val = option.GetAttributeValue("value", "").Trim();
+                string txt = option.InnerText.Trim();
+                bool isSelected = option.Attributes.Contains("selected");
+
+                if (!string.IsNullOrEmpty(val)) tousLesLots += $"[{val}:{txt}] ";
+
+                if (isSelected || selectBatchNode.GetAttributeValue("value", "") == val)
+                {
+                    lotInfos["SelectedValue"] = val;
+                    lotInfos["SelectedText"] = txt;
+                }
+            }
+
+            if (!lotInfos.ContainsKey("SelectedValue") && options.Count > 0)
+            {
+                lotInfos["SelectedValue"] = options[0].GetAttributeValue("value", "");
+                lotInfos["SelectedText"] = options[0].InnerText.Trim();
+            }
+            lotInfos["AllAvailableOptions"] = tousLesLots;
+
+            AppiumLoggerService.LogInfo("==========================================================", OrigineLog);
+            AppiumLoggerService.LogInfo($"🟢 LOT ACTUELLEMENT CHARGÉ : {lotInfos.GetValueOrDefault("SelectedValue", "INCONNU")}", OrigineLog);
+            AppiumLoggerService.LogInfo($"📄 TEXTE INTEGRAL DU LOT   : {lotInfos.GetValueOrDefault("SelectedText", "INCONNU")}", OrigineLog);
+            AppiumLoggerService.LogInfo($"📦 TOUTES LES OPTIONS DISPO : {lotInfos.GetValueOrDefault("AllAvailableOptions", "AUCUNE")}", OrigineLog);
+            AppiumLoggerService.LogInfo("==========================================================", OrigineLog);
+        }
+        catch (Exception ex)
+        {
+            AppiumLoggerService.LogError($"Erreur pendant le scan ciblé du lot : {ex.Message}", OrigineLog);
+        }
+
+        return lotInfos;
+    }
+    
+    /// <summary>
+    /// 🕵️‍♂️ OUTIL DE DIAGNOSTIC : Radiographie complète de l'état de la page Fiche ICA
+    /// </summary>
+    public static Dictionary<string, string> DumpFicheIcaCurrentState()
+    {
+        var diagnostics = new Dictionary<string, string>();
+        
+        if (_driver == null)
+        {
+            AppiumLoggerService.LogError("Impossible de dumper la page : Le Driver n'est pas initialisé.", OrigineLog);
+            return diagnostics;
+        }
+
+        try
+        {
+            SwitchToWebViewContext();
+            var html = GetFreshPageSource();
+            if (string.IsNullOrEmpty(html)) return diagnostics;
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+
+            AppiumLoggerService.LogInfo("==================================================================", OrigineLog);
+            AppiumLoggerService.LogInfo("🔍 [PAGE DUMP] INSPECTION COMPLÈTE DE L'ÉCRAN FICHE ICA", OrigineLog);
+            AppiumLoggerService.LogInfo("==================================================================", OrigineLog);
+
+            // 1. Extraction de l'Action
+            var actionNode = doc.DocumentNode.SelectSingleNode("//select[@id='actionid']");
+            string actionTxt = actionNode?.SelectSingleNode(".//option[@selected]")?.InnerText.Trim() 
+                               ?? actionNode?.SelectSingleNode(".//option[1]")?.InnerText.Trim() ?? "Non trouvé";
+            AppiumLoggerService.LogInfo($"🎬 Action sélectionnée  : {actionTxt}", OrigineLog);
+
+            // 2. Extraction du Lot (#batch)
+            var batchNode = doc.DocumentNode.SelectSingleNode("//select[@id='batch']");
+            var selectedBatchOpt = batchNode?.SelectSingleNode(".//option[@selected]");
+            string batchId = selectedBatchOpt?.GetAttributeValue("value", "") ?? batchNode?.GetAttributeValue("value", "") ?? "Inconnu";
+            string batchTxt = selectedBatchOpt?.InnerText.Trim() ?? "Aucun texte";
+            AppiumLoggerService.LogInfo($"📦 Lot Actif (#batch)   : ID = {batchId} | Label = {batchTxt}", OrigineLog);
+
+            // 3. Extraction de l'Abattoir (#dif_enr16)
+            var abattoirNode = doc.DocumentNode.SelectSingleNode("//select[@id='dif_enr16']");
+            string abattoirTxt = abattoirNode?.SelectSingleNode(".//option[@selected]")?.InnerText.Trim() ?? "Non sélectionné";
+            AppiumLoggerService.LogInfo($"🏢 Abattoir (#dif_enr16): {abattoirTxt}", OrigineLog);
+
+            // 4. Lecture des dates clés insérées dans les inputs
+            string dateSignature = doc.DocumentNode.SelectSingleNode("//input[@id='dif_enr2']")?.GetAttributeValue("value", "") ?? "Vide";
+            string dateReception = doc.DocumentNode.SelectSingleNode("//input[@id='dif_enr15']")?.GetAttributeValue("value", "") ?? "Vide";
+            string dateEnlevement = doc.DocumentNode.SelectSingleNode("//input[@id='removal_date' or @id='dif_enr14']")?.GetAttributeValue("value", "") ?? "Vide";
+            AppiumLoggerService.LogInfo($"📅 Date Signature       : {dateSignature}", OrigineLog);
+            AppiumLoggerService.LogInfo($"📅 Date Réception Abat. : {dateReception}", OrigineLog);
+            AppiumLoggerService.LogInfo($"📅 Date Enlèvement      : {dateEnlevement}", OrigineLog);
+
+            // 5. Analyse de l'état des sections d'animaux (Masquées ou Affichées dans le style HTML)
+            var maleNode = doc.DocumentNode.SelectSingleNode("//div[@id='male']");
+            var femaleNode = doc.DocumentNode.SelectSingleNode("//div[@id='female']");
+            var nonSexNode = doc.DocumentNode.SelectSingleNode("//div[@id='non-sexing']");
+
+            string stateMale = maleNode?.GetAttributeValue("style", "").Contains("display: none") == true ? "❌ MASQUÉ" : "🟢 VISIBLE";
+            string stateFemale = femaleNode?.GetAttributeValue("style", "").Contains("display: none") == true ? "❌ MASQUÉ" : "🟢 VISIBLE";
+            string stateNonSex = nonSexNode?.GetAttributeValue("style", "").Contains("display: none") == true ? "❌ MASQUÉ" : "🟢 VISIBLE (Tout-venant)";
+
+            AppiumLoggerService.LogInfo($"🧬 Section Mâles        : {stateMale}", OrigineLog);
+            AppiumLoggerService.LogInfo($"🧬 Section Femelles      : {stateFemale}", OrigineLog);
+            AppiumLoggerService.LogInfo($"🧬 Section Tout-venant   : {stateNonSex}", OrigineLog);
+
+            // 6. Lecture des valeurs de quantités saisies (si présentes)
+            string qteMale = doc.DocumentNode.SelectSingleNode("//input[@id='dif_enr17']")?.GetAttributeValue("value", "") ?? "0";
+            string qteFemale = doc.DocumentNode.SelectSingleNode("//input[@id='dif_enr19']")?.GetAttributeValue("value", "") ?? "0";
+            string qteToutVenant = doc.DocumentNode.SelectSingleNode("//input[@id='dif_enr21']")?.GetAttributeValue("value", "") ?? "0";
+            AppiumLoggerService.LogInfo($"📊 Quantité [M]: {qteMale} | [F]: {qteFemale} | [Tout-venant]: {qteToutVenant}", OrigineLog);
+
+            AppiumLoggerService.LogInfo("==================================================================", OrigineLog);
+
+            // Remplissage du dictionnaire pour exploitation par le code
+            diagnostics["BatchId"] = batchId;
+            diagnostics["BatchText"] = batchTxt;
+            diagnostics["IsToutVenantVisible"] = (stateNonSex == "🟢 VISIBLE (Tout-venant)").ToString();
+        }
+        catch (Exception ex)
+        {
+            AppiumLoggerService.LogError($"Erreur pendant le gros dump de la page : {ex.Message}", OrigineLog);
+        }
+
+        return diagnostics;
     }
 }

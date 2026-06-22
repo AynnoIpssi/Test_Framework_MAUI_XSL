@@ -6,5 +6,14 @@ public enum JsScriptType
     AppiumInputFillSequentially,
     AppiumClickElement,
     AppiumNavigationGo,
-    AppiumNavigationModuleGo
+    AppiumNavigationModuleGo,
+    AppiumScrollToElement,
+    AppiumGetAlertText,
+    AppiumCloseAlert,
+    AppiumCheckIcaReadingMessage,
+    FeedFicheIca,
+    AppiumFormFieldsFetchVisible,
+    AppiumFillFormFields,
+    AppiumSingature,
+    
 }   

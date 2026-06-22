@@ -4,6 +4,7 @@ using System.IO;
 using OpenQA.Selenium;
 using BaobaTesterBox.Core.Driver;
 using BaobaTesterBox.Core.Loggings;
+using System.Linq; // à ajouter en haut
 
 namespace BaobaTesterBox.Core.ScriptExecutor;
 
@@ -44,11 +45,25 @@ public class AppiumJsExecutor
         // 4. Sécurité d'injection du "return" (Ton fix d'origine conservé)
         string scriptExecuteconforme = scriptContent;
 
+        var corpsReel = string.Join("\n", scriptContent
+                .Split('\n')
+                .SkipWhile(l => l.TrimStart().StartsWith("//")))
+            .TrimStart();
+
         if (scriptContent.Contains("window.jsResult"))
         {
             scriptExecuteconforme = scriptContent + "\nreturn window.jsResult;";
         }
-        else if (!scriptContent.Trim().StartsWith("return") && !scriptContent.Contains("return "))
+        else if (corpsReel.StartsWith("return"))
+        {
+            // Déjà un vrai return en tête (scripts de navigation par ex.) — rien à faire
+        }
+        else if (corpsReel.StartsWith("(function") || corpsReel.StartsWith("(async"))
+        {
+            // IIFE : son return interne ne ressort jamais sans return explicite devant l'appel
+            scriptExecuteconforme = "return " + scriptContent;
+        }
+        else if (!scriptContent.Contains("return "))
         {
             scriptExecuteconforme = "return " + scriptContent;
         }
@@ -63,8 +78,20 @@ public class AppiumJsExecutor
             Enum.JsScriptType.AppiumClickElement => driver.ExecuteScript(scriptExecuteconforme, args),
             Enum.JsScriptType.AppiumNavigationGo => driver.ExecuteScript(scriptExecuteconforme, args),
             Enum.JsScriptType.AppiumNavigationModuleGo => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumScrollToElement => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumGetAlertText => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumCloseAlert => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumCheckIcaReadingMessage => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.FeedFicheIca => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumFormFieldsFetchVisible => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumFillFormFields => driver.ExecuteScript(scriptExecuteconforme, args),
+            Enum.JsScriptType.AppiumSingature => driver.ExecuteScript(scriptExecuteconforme, args),
 
             _ => throw new ArgumentException($"[AppiumJsExecutor] Type de script non géré : {scriptType}")
         };
     }
+    
+    
+    
+    
 }

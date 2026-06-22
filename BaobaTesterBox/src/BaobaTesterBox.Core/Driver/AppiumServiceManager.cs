@@ -59,6 +59,7 @@ public class AppiumDriverService
         }
 
         appiumOptions.AddAdditionalAppiumOption("appium:ensureWebviewsHavePages", true);
+        appiumOptions.AddAdditionalAppiumOption("appium:chromedriverAutodownload", globalOptions.Chromedriver_autodownload);
         appiumOptions.AddAdditionalAppiumOption("appium:chromedriverArgs", new List<string> { "--whitelisted-ips=127.0.0.1" });
 
         var serverUri = new Uri(globalOptions.ServerUrl);
